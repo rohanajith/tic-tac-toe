@@ -121,6 +121,7 @@ class Game extends Component{
         else{
           document.getElementById("result").innerHTML = "Player 2 is disqualified. <span>Player 1 wins.</span>";
         }
+        document.getElementById("cover").style.display = "none";
         this.setState({gameOver:false,disqualify:1});
       }
     },1000)  
@@ -150,6 +151,7 @@ render() {
 
   return (
     <div className="App">
+      <h1>Tic Tac Toe</h1>
       <div className = "options">
         <Row className="justify-content-md-center">
           <Col><div className = "board">{box}</div></Col>
@@ -162,8 +164,9 @@ render() {
       </div>
       <div id="final"></div>
       <div id="result"></div>
-      {this.state.disqualify === 1 && 
-        <Button variant = "info" id="newGame" onClick={() => {this.startAgain()}}>Start new game</Button>}
+     <span id="cover"> 
+         {this.state.disqualify === 1 && setTimeout(() => {this.startAgain()},2000)}
+      </span>
       {this.state.val === 1 && <meta httpEquiv="refresh" content="4" ></meta> }
     </div>
   );
